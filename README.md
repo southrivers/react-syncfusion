@@ -68,3 +68,20 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+## vs插件
+
+需要es7的插件才可以使用rafce简洁写法，自动完成代码需要tabnine
+
+## 配置文件
+index.js 项目跟路径，app.js项目实际应用，index.css 配置tailwindcss,app.css用于项目自定义的css
+外层配置tailwind配置文件
+
+package.json 中指定特定版本的依赖
+
+
+## 安装依赖报错
+
+使用命令：npm set audit false
+并重新安装
