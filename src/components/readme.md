@@ -1,0 +1,6 @@
+用于存放组件的文件夹
+
+并且component之间并没有包含关系
+
+
+一个page可以包含多个component
