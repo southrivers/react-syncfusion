@@ -11,9 +11,13 @@ import {SiderBar, Navbar, Footer, ThemeSettings} from './components';
 import { Calendar, Customers, Ecommerce, Editor, Employees, Kanban, Orders } from './pages'
 
 import './App.css'
+import {useStateContext} from './contexts/ContextProvider'
 
 const App = () => {
-  const activeMenu = true;
+
+  const {activeMenu} = useStateContext()
+
+  // const activeMenu = true;
 
   return (
     <div className='h-screen'>
@@ -29,14 +33,15 @@ const App = () => {
             </TooltipComponent>
           </div>
           {activeMenu ? 
-          (<div className='fixed w-72 bg-slate-700'>
+          (<div className='fixed w-72 bg-white'>
             <SiderBar/>
-          </div>) : (<div className='w-0 bg-secondary-dark-bg'>
+          </div>) : (<div className='w-0'>
             <SiderBar/>
           </div>)}
           {/* react js 脚本不仅可以在html中使用，也可以在标签中的属性中使用，并且可以借用字符串模板进行使用，字符串模板中使用需要用$将其括起来 */}
             <div className={`min-h-screen w-full  ${activeMenu ? 'md:ml-72' : 'flex-2'}`}>
-              <div className='flex md:static w-full items-center justify-center'>
+              {/* 这里使用flex则static就不会生效了,原因待确认,不过fixed和static好像很搭配 TODO */}
+              <div className='fixed w-full md:static navbar'>
                 <Navbar/>
               </div>
               <div>

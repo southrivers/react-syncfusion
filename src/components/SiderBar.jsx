@@ -7,9 +7,17 @@ import {SiShopware} from 'react-icons/si'
 import {MdCancel} from 'react-icons/md'
 import { Link, NavLink } from 'react-router-dom';
 import { links } from '../data/dummy';
+import { useStateContext } from '../contexts/ContextProvider'
 
 
 const SiderBar = () => {
+
+  const activeLink = 'flex items-center rounded-lg pl-4 pt-3 pb-2.5 gap-5 m-2  hover:bg-red ';
+
+  const normalLink = 'flex items-center rounded-lg pl-4 pt-3 pb-2.5 gap-5 hover:bg-sky-500 m-2';
+
+  const {setactiveMenu} = useStateContext();
+
   return (
     // overflow-auto可以控制当元素超出页面的时候有滚动条的出现
     <div className='h-screen overflow-auto'>
@@ -18,13 +26,15 @@ const SiderBar = () => {
         <Link to="/" onClick={()=>{}} className='flex m-2 mt-4 space-x-1'>
           <SiShopware/> <span className='font-bold'>Shoppy</span>
         </Link>
-        <div className='m-2 mt-4'>
+        {/* <div className='m-2 mt-4'>
           <TooltipComponent content="关闭" position='TopCenter'>
-            <button type='button'>
+            <button type='button' onClick={()=>{
+              setactiveMenu(false);
+            }}>
               <MdCancel className='text-xl'/>
             </button>
           </TooltipComponent>
-        </div>
+        </div> */}
       </div>
       <div className='mt-10'>
         {links.map((item) => (
@@ -32,8 +42,14 @@ const SiderBar = () => {
             <p className='mt-4 m-4 uppercase'>
               {item.title}
             </p>
+            {/* 在className 中使用析构的方式获取传过来的属性,并根据属性判断最终的样式,接收的首先是一个js函数
+              isActive 是基于NavLink的属性确定的属性
+            */}
             {item.links.map((link) => (
-                <NavLink to={`/${link.name}`} key={links.name} onClick={()=>{}} className='capitalize items-center flex gap-5 ml-2 pl-4 pt-3 pb-2.5'>
+                <NavLink to={`/${link.name}`} key={links.name} onClick={()=>{}} className={({isActive}) => {
+                  // console.log(isActive);
+                  return isActive ? activeLink : normalLink
+                }}>
                   {/* icon 是块元素,可以控制该块对应元素不要显示在一行 */}
                   {link.icon}
                   <span>{link.name}</span>
