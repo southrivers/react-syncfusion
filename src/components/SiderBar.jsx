@@ -16,17 +16,22 @@ const SiderBar = () => {
 
   const normalLink = 'flex items-center rounded-lg pl-4 pt-3 pb-2.5 gap-5 hover:bg-sky-500 m-2';
 
-  const {setactiveMenu} = useStateContext();
+  const {activeMenu, setactiveMenu, screenSize} = useStateContext();
 
+  const handleClickMenuBar = () => {
+    if (activeMenu && screenSize < 798) {
+      setactiveMenu(false);
+    }
+  }
   return (
     // overflow-auto可以控制当元素超出页面的时候有滚动条的出现
     <div className='h-screen overflow-auto'>
       {/* 侧边导航头 */}
       <div className='flex m-3 mt-4 justify-between'>
-        <Link to="/" onClick={()=>{}} className='flex m-2 mt-4 space-x-1'>
+        <Link to="/" onClick={handleClickMenuBar} className='flex m-2 mt-4 space-x-1'>
           <SiShopware/> <span className='font-bold'>Shoppy</span>
         </Link>
-        {/* <div className='m-2 mt-4'>
+        <div className='m-2 mt-4 md:hidden'>
           <TooltipComponent content="关闭" position='TopCenter'>
             <button type='button' onClick={()=>{
               setactiveMenu(false);
@@ -34,7 +39,7 @@ const SiderBar = () => {
               <MdCancel className='text-xl'/>
             </button>
           </TooltipComponent>
-        </div> */}
+        </div>
       </div>
       <div className='mt-10'>
         {links.map((item) => (
@@ -46,7 +51,7 @@ const SiderBar = () => {
               isActive 是基于NavLink的属性确定的属性
             */}
             {item.links.map((link) => (
-                <NavLink to={`/${link.name}`} key={links.name} onClick={()=>{}} className={({isActive}) => {
+                <NavLink to={`/${link.name}`} key={links.name} onClick={handleClickMenuBar} className={({isActive}) => {
                   // console.log(isActive);
                   return isActive ? activeLink : normalLink
                 }}>

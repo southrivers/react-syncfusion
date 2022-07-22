@@ -33,7 +33,8 @@ const App = () => {
             </TooltipComponent>
           </div>
           {activeMenu ? 
-          (<div className='fixed w-72 bg-white'>
+          (<div className='fixed w-72 bg-white sidebar'>
+            {/* FIXME 这里sidebar是用来设置z-index的,让侧边栏优先级很高很高,不过直接使用z-10000并不会生效,原因不确定 */}
             <SiderBar/>
           </div>) : (<div className='w-0'>
             <SiderBar/>
@@ -41,7 +42,7 @@ const App = () => {
           {/* react js 脚本不仅可以在html中使用，也可以在标签中的属性中使用，并且可以借用字符串模板进行使用，字符串模板中使用需要用$将其括起来 */}
             <div className={`min-h-screen w-full  ${activeMenu ? 'md:ml-72' : 'flex-2'}`}>
               {/* 这里使用flex则static就不会生效了,原因待确认,不过fixed和static好像很搭配 TODO */}
-              <div className='fixed w-full md:static navbar'>
+              <div className='w-full md:static'>
                 <Navbar/>
               </div>
               <div>
