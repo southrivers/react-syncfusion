@@ -1,5 +1,5 @@
 import React from 'react';
-import { GridComponent, Inject, ColumnsDirective, ColumnDirective, Search, Page } from '@syncfusion/ej2-react-grids';
+import { GridComponent, Toolbar, Inject, ColumnsDirective, ColumnDirective, Search, Page } from '@syncfusion/ej2-react-grids';
 
 import { employeesData, employeesGrid } from '../data/dummy';
 
@@ -23,7 +23,8 @@ const Employees = () => {
           {/* eslint-disable-next-line react/jsx-props-no-spreading */}
           {employeesGrid.map((item, index) => <ColumnDirective key={index} {...item} />)}
         </ColumnsDirective>
-        <Inject services={[Search, Page]} />
+        {/* 这里必须要注入Toolbar,在强制刷新的时候才会依然保留搜索框 */}
+        <Inject services={[Search, Page, Toolbar]} />
 
       </GridComponent>
     </>
