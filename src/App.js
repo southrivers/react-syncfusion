@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, HashRouter } from 'react-router-dom';
 
 import { FiSettings } from 'react-icons/fi';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups'
@@ -23,7 +23,7 @@ const App = () => {
     <div className='h-screen'>
       {/* 使用内联的style去定义样式的时候是想要改变主题
        */}
-      <BrowserRouter>
+      <HashRouter>
         <div className='flex relative'>
           <div className='fixed right-4 bottom-4 z-1000'>
             <TooltipComponent content="设置" position='TopCenter'>
@@ -63,7 +63,7 @@ const App = () => {
               </div>
             </div>
         </div>
-      </BrowserRouter>
+      </HashRouter>
     </div>
   )
 }
