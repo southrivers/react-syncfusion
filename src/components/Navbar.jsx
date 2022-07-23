@@ -16,7 +16,7 @@ const NavButton = ({title, icon, customFunc}) => (
   position="BottomCenter"
   >
     {/* 为什么这里的onclick不是回调函数????,因为这里传递的就是一个回调函数 */}
-    <button type='button' onClick={customFunc} className='text-2xl'>
+    <button type='button' style={{color: 'blue'}} onClick={customFunc} className='text-2xl'>
       {icon}
     </button>
   </TooltipComponent>
@@ -58,7 +58,6 @@ const Navbar = () => {
         }}/>
         <div className='flex space-x-5 mr-2'>
           <NavButton title='消息' icon={<BiNotification/>} customFunc={()=>{
-            console.log('消息')
             handleClick('chat');
           }}/>
           <NavButton title='个人信息' icon={<AiOutlineUser/>} customFunc={()=>{

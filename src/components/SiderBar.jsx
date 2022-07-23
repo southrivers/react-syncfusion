@@ -14,7 +14,7 @@ const SiderBar = () => {
 
   const activeLink = 'flex items-center rounded-lg pl-4 pt-3 pb-2.5 gap-5 m-2  hover:bg-red ';
 
-  const normalLink = 'flex items-center rounded-lg pl-4 pt-3 pb-2.5 gap-5 hover:bg-sky-500 m-2';
+  const normalLink = 'flex items-center rounded-lg pl-4 pt-3 pb-2.5 gap-5 m-2 hover:bg-blue';
 
   const {activeMenu, setactiveMenu, screenSize} = useStateContext();
 
@@ -51,7 +51,11 @@ const SiderBar = () => {
               isActive 是基于NavLink的属性确定的属性
             */}
             {item.links.map((link) => (
-                <NavLink to={`/${link.name}`} key={links.name} onClick={handleClickMenuBar} className={({isActive}) => {
+                <NavLink to={`/${link.name}`} key={links.name} onClick={handleClickMenuBar} 
+                // 这里返回的必须是一个object才可以
+                style={({isActive}) => ({backgroundColor: isActive ?
+                   'blue': '',color: isActive? 'white':''})}
+                className={({isActive}) => {
                   // console.log(isActive);
                   return isActive ? activeLink : normalLink
                 }}>
