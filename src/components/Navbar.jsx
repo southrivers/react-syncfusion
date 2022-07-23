@@ -5,7 +5,7 @@ import { useStateContext } from '../contexts/ContextProvider';
 import {BiNotification} from 'react-icons/bi'
 import {AiOutlineUser} from 'react-icons/ai'
 import {UserProfile, Chat} from '.'
-
+import shuai from '../data/images.jpg'
 
 // {} 表示组件用来接受参数的容器,这个和state并不同,state是全局共享的,props是组件间进行传递的
 
@@ -52,7 +52,7 @@ const Navbar = () => {
   },[screenSize])
 
   return (
-    <div className='flex justify-between p-2 pt-5 relative space-x-100'>
+    <div className='flex justify-between p-2 pt-5 relative space-x-100 items-center'>
         <NavButton title="菜单" icon={<AiOutlineMenu/>} customFunc={() => {
           setactiveMenu((pre) => !pre);
         }}/>
@@ -60,9 +60,10 @@ const Navbar = () => {
           <NavButton title='消息' icon={<BiNotification/>} customFunc={()=>{
             handleClick('chat');
           }}/>
-          <NavButton title='个人信息' icon={<AiOutlineUser/>} customFunc={()=>{
+          {/* <NavButton title='个人信息' icon={<AiOutlineUser/>} customFunc={()=>{
             handleClick('userProfile');
-          }}/>
+          }}/> */}
+          <img src={shuai} alt="" className='h-8 w-8 rounded-full -mt-1' />
           {isClicked.chat && <Chat/>}
           {isClicked.userProfile && <UserProfile/>}
         </div>
