@@ -875,18 +875,18 @@ export const ordersGrid = [
     headerText: 'Image',
     template: gridOrderImage,
     textAlign: 'Center',
-    width: '120',
+    width: '100',
   },
   {
     field: 'OrderItems',
     headerText: 'Item',
-    width: '150',
+    width: '120',
     editType: 'dropdownedit',
     textAlign: 'Center',
   },
   { field: 'CustomerName',
     headerText: 'Customer Name',
-    width: '150',
+    width: '120',
     textAlign: 'Center',
   },
   {
@@ -895,7 +895,7 @@ export const ordersGrid = [
     format: 'C2',
     textAlign: 'Center',
     editType: 'numericedit',
-    width: '150',
+    width: '120',
   },
   {
     headerText: 'Status',
@@ -914,7 +914,7 @@ export const ordersGrid = [
   {
     field: 'Location',
     headerText: 'Location',
-    width: '150',
+    width: '120',
     textAlign: 'Center',
   },
 ];
